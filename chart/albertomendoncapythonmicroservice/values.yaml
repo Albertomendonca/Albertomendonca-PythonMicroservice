@@ -3,7 +3,11 @@
 replicaCount: 1
 revisionHistoryLimit: 1
 image:
+<<<<<<< HEAD
   repository: icr.io/lbertomendoncaythonicroservice/albertomendoncapythonmicroservice
+=======
+  repository: icr.io/replace-me-namespace/albertomendoncapythonmicroservice
+>>>>>>> bcaa96a46d3a69cbe207a7ae3e4f41571ce636be
   tag: v1.0.0
   pullPolicy: Always
   resources:

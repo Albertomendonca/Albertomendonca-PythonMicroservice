@@ -47,6 +47,10 @@ chart-path : "chart/albertomendoncapythonmicroservice"
 
 # The IBM version of this configuration
 version : "0.0.3"
+<<<<<<< HEAD
 ibm-generated-id : "91641517-82ab-4f2d-9cd4-e57fda12680b"
+=======
+ibm-generated-id : "f3a0d271-84f1-459e-b476-ca8bb34c2503"
+>>>>>>> bcaa96a46d3a69cbe207a7ae3e4f41571ce636be
 ibm-cloud-app-id : "afd812e9-720c-47cf-90fe-dce537d33c51"
 credentials-filepath : "credentials.json, localdev-config.json, server/localdev-config.json"

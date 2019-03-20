@@ -35,11 +35,18 @@ services:
           REPO: repo
           CF_APP: "{{form.pipeline.parameters.app-name}}"
           API_KEY: "{{form.pipeline.parameters.api-key}}"
+<<<<<<< HEAD
           CHART_NAME: "{{form.pipeline.parameters.chart-name}}"
           KUBE_CLUSTER_NAME: "{{form.pipeline.parameters.kube-cluster-name}}"
           CLUSTER_NAMESPACE: "{{form.pipeline.parameters.cluster-namespace}}"
           IMAGE_REGISTRY_TOKEN: "{{form.pipeline.parameters.image-registry-token}}"
           REGISTRY_NAMESPACE: "{{form.pipeline.parameters.registry-namespace}}"
+=======
+          CF_SPACE: "{{form.pipeline.parameters.dev-space}}"
+          CF_ORGANIZATION: "{{form.pipeline.parameters.dev-organization}}"
+          CF_HOSTNAME: "{{form.pipeline.parameters.cf-host}}"
+          CF_DOMAIN: "{{form.pipeline.parameters.cf-domain}}"
+>>>>>>> bcaa96a46d3a69cbe207a7ae3e4f41571ce636be
           REGION_ID: "{{form.pipeline.parameters.dev-region}}"
         execute: true
 
@@ -57,9 +64,16 @@ form:
       toolchain-name: "{{toolchain-name}}"
       dev-region: "{{deploymentRegion}}"
       api-key: "{{api-key}}"
+<<<<<<< HEAD
       chart-name: albertomendoncapythonmicroservice
       kube-cluster-name: Alberto-cluster
       cluster-namespace: default
       image-pull-secret-name: "{{image-pull-secret-name}}"
       image-registry-token: "{{image-registry-token}}"
       registry-namespace: lbertomendoncaythonicroservice
+=======
+      dev-space: "{{deploymentSpace}}"
+      dev-organization: "{{deploymentOrg}}"
+      cf-host: "{{cf-host}}"
+      cf-domain: "{{cf-domain}}"
+>>>>>>> bcaa96a46d3a69cbe207a7ae3e4f41571ce636be

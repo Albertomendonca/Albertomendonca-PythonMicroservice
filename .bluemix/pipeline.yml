@@ -5,6 +5,7 @@ stages:
   - type: git
     branch: master
     service: ${REPO}
+<<<<<<< HEAD
   triggers:
   - type: commit
   properties:
@@ -64,6 +65,24 @@ stages:
       SCRIPTS_DIR=.bluemix/scripts # SCRIPTS_DIR is used in container_build.sh
       source ${SCRIPTS_DIR}/container_build.sh
 
+=======
+  properties:
+  - name: CF_HOSTNAME
+    value: "${CF_HOSTNAME}"
+    type: text
+  - name: CF_DOMAIN
+    value: "${CF_DOMAIN}"
+    type: text
+  triggers:
+  - type: commit
+  jobs:
+  - name: Build
+    type: builder
+    artifact_dir: ''
+    build_type: shell
+    script: |-
+      #!/bin/bash
+>>>>>>> bcaa96a46d3a69cbe207a7ae3e4f41571ce636be
       if  [[ -f post_build.sh ]]; then
         chmod +x post_build.sh;
         echo "executing the post_build script";
@@ -77,6 +96,7 @@ stages:
     stage: Build Stage
     job: Build
   properties:
+<<<<<<< HEAD
   - name: buildProperties
     value: build.properties
     type: file
@@ -88,6 +108,13 @@ stages:
     type: text
   - name: IMAGE_REGISTRY_TOKEN
     value: ${IMAGE_REGISTRY_TOKEN}
+=======
+  - name: CF_HOSTNAME
+    value: "${CF_HOSTNAME}"
+    type: text
+  - name: CF_DOMAIN
+    value: "${CF_DOMAIN}"
+>>>>>>> bcaa96a46d3a69cbe207a7ae3e4f41571ce636be
     type: text
   triggers:
   - type: stage
@@ -95,6 +122,7 @@ stages:
   - name: Deploy
     type: deployer
     target:
+<<<<<<< HEAD
       application: ${CF_APP}
       api_key: ${API_KEY}
       region_id: ${REGION_ID}
@@ -106,6 +134,17 @@ stages:
       source .bluemix/scripts/kube_deploy.sh
       echo "export IP_ADDR=${IP_ADDR}" >> kube_vars.sh
       echo "export PORT=${PORT}" >> kube_vars.sh
+=======
+      region_id: ${REGION_ID}
+      organization: ${CF_ORGANIZATION}
+      space: ${CF_SPACE}
+      application: ${CF_APP}
+      api_key: ${API_KEY}
+    script: |-
+      #!/bin/bash
+      cf push "${CF_APP}" --hostname "${CF_HOSTNAME}" -d "${CF_DOMAIN}"
+      # cf logs "${CF_APP}" --recent
+>>>>>>> bcaa96a46d3a69cbe207a7ae3e4f41571ce636be
 - name: Health Stage
   inputs:
   - type: job
@@ -116,6 +155,7 @@ stages:
   permission:
     execute: TOOLCHAIN_ADMINS
   properties:
+<<<<<<< HEAD
   - name: CLUSTER_NAMESPACE
     value: ${CLUSTER_NAMESPACE}
     type: text
@@ -152,3 +192,26 @@ stages:
         exit 1;
       fi;
 
+=======
+  - name: CF_HOSTNAME
+    value: "${CF_HOSTNAME}"
+    type: text
+  - name: CF_DOMAIN
+    value: "${CF_DOMAIN}"
+    type: text
+  jobs:
+  - name: Test
+    type: tester
+    script: |-
+      #!/bin/sh
+      apk add --no-cache curl
+      if [ "$(curl -is http://albertomendonca-python-microservice.mybluemix.net/health  --connect-timeout 3 --max-time 5 --retry 3 --retry-max-time 30 | head -n 1 | grep 200)" != "" ]; then
+        echo "Successfully reached health endpoint"
+        echo "====================================================================="
+      else
+        echo "Could not reach health endpoint: http://albertomendonca-python-microservice.mybluemix.net/health"
+        exit 1;
+      fi;
+    test_type: customimage
+    docker_image: alpine
+>>>>>>> bcaa96a46d3a69cbe207a7ae3e4f41571ce636be

@@ -12,12 +12,21 @@
       "description": "The IBM Cloud region",
       "type": "string"
     },
+<<<<<<< HEAD
     "image-registry-token": {
       "description": "Container Registry access token. Retrievable via [ibmcloud cr tokens]",
       "type": "string"
     },
     "kube-cluster-name": {
       "description": "Your cluster name. Retrieve it with [ibmcloud cs clusters] or via the console at https://cloud.ibm.com/containers-kubernetes/home/clusters.",
+=======
+    "dev-organization": {
+      "description": "The IBM Cloud org",
+      "type": "string"
+    },
+    "dev-space": {
+      "description": "The IBM Cloud space",
+>>>>>>> bcaa96a46d3a69cbe207a7ae3e4f41571ce636be
       "type": "string"
     },
     "app-name": {
@@ -25,7 +34,11 @@
       "type": "string"
     }
   },
+<<<<<<< HEAD
   "required": ["dev-region",   "app-name", "api-key", "image-registry-token", "image-pull-secret-name", "kube-cluster-name"],  "form": [{
+=======
+  "required": ["dev-region", "dev-organization", "dev-space",  "app-name"],  "form": [{
+>>>>>>> bcaa96a46d3a69cbe207a7ae3e4f41571ce636be
     "type": "validator",
     "url": "/devops/setup/bm-helper/helper.html"
   },
@@ -36,6 +49,7 @@
     "key": "api-key"
   },
   {
+<<<<<<< HEAD
     "type": "password",
     "readonly": false,
     "title": "Container Registry access token",
@@ -47,20 +61,45 @@
     "key": "kube-cluster-name"
   },
   {
+=======
+>>>>>>> bcaa96a46d3a69cbe207a7ae3e4f41571ce636be
     "type": "text",
     "readonly": false,
     "title": "App Name",
     "key": "app-name"
   }, {
     "type": "table",
+<<<<<<< HEAD
     "columnCount": 1,
     "widths": ["28%"],
+=======
+    "columnCount": 3,
+    "widths": ["28%", "28%", "28%"],
+>>>>>>> bcaa96a46d3a69cbe207a7ae3e4f41571ce636be
     "items": [{
       "type": "label",
       "title": "Region"
     }, {
+<<<<<<< HEAD
       "type": "select",
       "key": "dev-region"
+=======
+      "type": "label",
+      "title": "Organization"
+    }, {
+      "type": "label",
+      "title": "Space"
+    }, {
+      "type": "select",
+      "key": "dev-region"
+    }, {
+      "type": "select",
+      "key": "dev-organization"
+    }, {
+      "type": "select",
+      "key": "dev-space",
+      "readonly": false
+>>>>>>> bcaa96a46d3a69cbe207a7ae3e4f41571ce636be
     }]
   }]
 }
